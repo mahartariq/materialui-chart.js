@@ -1,24 +1,43 @@
 import React from 'react';
+import NavBar from './NavBar';
 import logo from './logo.svg';
-import './App.css';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    padding:5  ,
+    backgroundColor: 'lightBlue',
+    width: 400,
+    margin: '0 auto',
+    textAlign: 'center',
+    marginTop:20
+  },
+  input:{
+    width:"98%",
+    marginBottom:10
+  }
+}));
 
 function App() {
+  const classes = useStyles();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.root}>
+      <NavBar/>
+      <Paper elevation={3} className={classes.paper}>
+        <h2>Login Form</h2>
+        <form className={classes.root} noValidate autoComplete="off">
+          <TextField id="standard-basic" label="Enter Email" className={classes.input} />
+          <TextField id="standard-basic" label="Enter Password" className={classes.input} />
+          <Button variant="contained" color="primary" className={classes.input}>
+  Login
+</Button>
+        </form>
+      </Paper>
     </div>
   );
 }
